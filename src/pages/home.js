@@ -37,7 +37,10 @@ function Home(props) {
                                        key={book.id}
                                        id={book.id}
                                        shelf={book.shelf}
-                                       img={book.imageLinks.thumbnail}
+                                       img={
+                                          book.imageLinks &&
+                                          book.imageLinks.thumbnail
+                                       }
                                        title={book.title}
                                        authors={book.authors}
                                     />

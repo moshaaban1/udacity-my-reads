@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import { DebounceInput } from "react-debounce-input";
 import * as BooksAPI from "../BooksAPI";
 import Book from "../components/Book";
 
@@ -44,7 +45,8 @@ class Search extends React.Component {
                   Close
                </Link>
                <div className="search-books-input-wrapper">
-                  <input
+                  <DebounceInput
+                     debounceTimeout={2000}
                      type="text"
                      placeholder="Search by title or author"
                      onChange={event => this.queryBooks(event.target.value)}
@@ -61,7 +63,7 @@ class Search extends React.Component {
                            key={book.id}
                            id={book.id}
                            shelf={book.shelf}
-                           img={book.imageLinks.thumbnail}
+                           img={book.imageLinks && book.imageLinks.thumbnail}
                            title={book.title}
                            authors={book.authors}
                         />
